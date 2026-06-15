@@ -22,8 +22,10 @@ class BorrowActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_borrow)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Confirmar Empréstimo"
+        val topAppBar = findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.topAppBarBorrow)
+        topAppBar.setNavigationOnClickListener {
+            finish()
+        }
 
         val bookId = intent.getIntExtra("BOOK_ID", -1)
         val bookTitle = intent.getStringExtra("BOOK_TITLE") ?: ""

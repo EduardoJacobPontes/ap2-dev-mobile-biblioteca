@@ -5,9 +5,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_book_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_book_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Biblioteca"
         android:usesCleartextTraffic="true">
@@ -32,6 +32,9 @@
             android:parentActivityName=".BookDetailActivity" />
         <activity
             android:name=".AddBookActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ReturnBookActivity"
             android:parentActivityName=".MainActivity" />
     </application>
 </manifest>

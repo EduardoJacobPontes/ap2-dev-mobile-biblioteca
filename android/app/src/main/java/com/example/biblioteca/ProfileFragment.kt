@@ -1,10 +1,12 @@
 package com.example.biblioteca
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
@@ -34,6 +36,19 @@ class ProfileFragment : Fragment() {
         
         rvMyBooks.layoutManager = LinearLayoutManager(context)
         carregarMeusEmprestimos(userId)
+        
+        val btnLogout = view.findViewById<Button>(R.id.btnLogout)
+        btnLogout.setOnClickListener {
+            // Limpa o usuário salvo
+            sharedPref.edit().clear().apply()
+            
+            // Volta para a tela de Login
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            // Impede que o usuário consiga voltar para essa tela clicando em "Voltar" no celular
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            requireActivity().finish()
+        }
         
         return view
     }

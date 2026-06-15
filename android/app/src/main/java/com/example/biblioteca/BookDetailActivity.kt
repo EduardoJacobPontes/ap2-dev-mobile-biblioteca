@@ -22,8 +22,10 @@ class BookDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_detail)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Detalhes do Livro"
+        val topAppBar = findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.topAppBar)
+        topAppBar.setNavigationOnClickListener {
+            finish()
+        }
 
         val bookId = intent.getIntExtra("BOOK_ID", -1)
         if (bookId == -1) {

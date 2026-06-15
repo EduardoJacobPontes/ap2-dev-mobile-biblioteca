@@ -34,6 +34,16 @@ def cadastrar_livro(livro: schemas.LivroCreate, db: Session = Depends(get_db)):
     db.refresh(db_livro)
     return db_livro
 
+@app.delete("/livros/{livro_id}", summary="Deletar Livro")
+def deletar_livro(livro_id: int, db: Session = Depends(get_db)):
+    livro = db.query(models.Livro).filter(models.Livro.id == livro_id).first()
+    if livro is None:
+        raise HTTPException(status_code=404, detail="Livro não encontrado")
+    db.delete(livro)
+    db.commit()
+    return {"message": "Livro deletado com sucesso"}
+
+
 @app.post("/emprestimos", response_model=schemas.Emprestimo, summary="Realizar Empréstimo")
 def realizar_emprestimo(emprestimo: schemas.EmprestimoCreate, db: Session = Depends(get_db)):
     livro = db.query(models.Livro).filter(models.Livro.id == emprestimo.livro_id).first()

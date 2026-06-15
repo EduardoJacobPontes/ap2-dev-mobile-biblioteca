@@ -17,8 +17,10 @@ class AddBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_book)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Emprestar meu Livro"
+        val topAppBar = findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.topAppBarAddBook)
+        topAppBar.setNavigationOnClickListener {
+            finish()
+        }
 
         val etTitle = findViewById<TextInputEditText>(R.id.etAddTitle)
         val etAuthor = findViewById<TextInputEditText>(R.id.etAddAuthor)
