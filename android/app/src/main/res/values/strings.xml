@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Biblioteca</string>
+    <string name="login">Entrar</string>
+    <string name="username">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="borrow">Pegar Emprestado</string>
+    <string name="share">Compartilhar</string>
+    <string name="accept_terms">Aceito os termos de uso</string>
+    <string name="duration">Prazo de devolução</string>
+</resources>
